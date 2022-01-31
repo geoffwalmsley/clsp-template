@@ -1,6 +1,6 @@
+from chia.types.blockchain_format.program import Program
 from chia.wallet.puzzles import p2_delegated_puzzle_or_hidden_puzzle
 from chia.wallet.puzzles.load_clvm import load_clvm
-from chia.types.blockchain_format.program import Program
 
 from src.utils.sim import load_clsp_relative
 
