@@ -1,0 +1,10 @@
+git+https://github.com/Chia-Network/chia-blockchain.git@atari#egg=chia-blockchain
+pytest
+pytest-asyncio
+jupyterlab
+pre-commit
+flake8
+mypy
+black
+python-lsp-server
+pytimeparse
