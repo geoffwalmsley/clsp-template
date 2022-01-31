@@ -1,0 +1,55 @@
+(
+  (defmacro assert items
+      (if (r items)
+          (list if (f items) (c assert (r items)) (q . (x)))
+          (f items)
+      )
+  )
+
+  (defmacro or ARGS
+      (if ARGS
+          (qq (if (unquote (f ARGS))
+              1
+              (unquote (c or (r ARGS)))
+          ))
+      0)
+  )
+
+  (defmacro and ARGS
+      (if ARGS
+          (qq (if (unquote (f ARGS))
+              (unquote (c and (r ARGS)))
+              ()
+              ))
+          1)
+  )
+
+  (defun map (proc items)
+    (if (r items)
+      (c (proc (f items)) (map proc (r items)))
+      (proc (f items)))
+  )
+
+  (defun-inline tree_branch_hash (left right) (sha256 2 left right))
+
+  (defun calculate_merkle_root (path current_hash additional_steps)
+     (if additional_steps
+       (calculate_merkle_root
+         (lsh path -1)
+         (if (logand path 1)
+           (tree_branch_hash
+             (f additional_steps)
+             current_hash
+           )
+           (tree_branch_hash
+             current_hash
+             (f additional_steps)
+           )
+         )
+         (r additional_steps)
+       )
+       current_hash
+     )
+   )
+
+)
