@@ -3,7 +3,7 @@ from chia.wallet.puzzles.load_clvm import load_clvm
 
 from src.utils.sim import load_clsp_relative
 
-PUZ = load_clsp_relative("src/clsp/custom_puzzle.clsp")
+PUZ = load_clsp_relative("src/clsp/custom_puzzle.clsp", ["src/include/"])
 
 def func() -> None:
     return 100
